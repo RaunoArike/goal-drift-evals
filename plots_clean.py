@@ -446,8 +446,8 @@ data_4o_mini = {
 
 data_haiku = {
     'Empty context': {'Goal drift': 1, 'Drift with recovery': 2, 'No goal drift': 12},
-    'Conditioned on goal-directed context': {'Goal drift': 0, 'Drift with recovery': 0, 'No goal drift': 5},
-    'Conditioned on drifted context': {'Goal drift': 6, 'Drift with recovery': 3, 'No goal drift': 0},
+    'Conditioned on goal-directed context': {'Goal drift': 0, 'Drift with recovery': 0, 'No goal drift': 8},
+    'Conditioned on drifted context': {'Goal drift': 7, 'Drift with recovery': 4, 'No goal drift': 0},
 }
 
 goal_drift_plots(data_4o_mini, data_haiku)
