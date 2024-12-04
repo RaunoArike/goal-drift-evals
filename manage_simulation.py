@@ -321,7 +321,6 @@ class SimulationManager:
                 response_message_content = response_message.content
             elif "claude" in model.lower():
                 response_message = response
-                print("Response message: ", response_message)
                 self.messages.append({"role": "assistant", "content": response.content})
                 tool_calls = [block for block in response.content if isinstance(block, ToolUseBlock)]
                 response_message_content = "".join(block.text for block in response.content if isinstance(block, TextBlock))

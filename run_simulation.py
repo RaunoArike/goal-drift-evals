@@ -18,7 +18,7 @@ class LogFileWriter:
     def flush(self):
         self.log_file.flush()
 
-def setup_logging(run):
+def setup_logging(run, verbose):
     log_file_path = f'logs/task1_output_run{run}.txt'
     
     # Clear the file at the start of a new run
@@ -38,7 +38,10 @@ def setup_logging(run):
     
     # Add file handler to root logger
     root_logger.addHandler(file_handler)
-    root_logger.setLevel(logging.INFO)  # Capture all levels of logs
+    if verbose:
+        root_logger.setLevel(logging.DEBUG)
+    else:
+        root_logger.setLevel(logging.WARNING)
     
     # Create a single file writer for both stdout and stderr
     log_file = open(log_file_path, 'a')  # Use append mode for subsequent writes
@@ -52,7 +55,7 @@ def setup_logging(run):
 
 def run_single_simulation(run, model, results_file, lock, num_timesteps, source_goal, target_goal, distractions, ood, resume, branch_from, verbose):
     try:
-        setup_logging(run)
+        setup_logging(run, verbose)
         sim_manager = SimulationManager(model, run)
         result = sim_manager.run_simulation(DefaultSimulation, num_timesteps, source_goal, target_goal, distractions, ood, resume, branch_from, verbose)
         

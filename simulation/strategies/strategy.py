@@ -4,6 +4,7 @@ class SimulationStrategy(ABC):
 
     def __init__(self):
         self.used_ids = set()
+        self.budget = 0
 
     @abstractmethod
     def gen_stocks(self, random_gen):
@@ -34,7 +35,7 @@ class SimulationStrategy(ABC):
 
     def calculate_negative_ratio(self, active_investments: dict) -> float:
         """Calculate the ratio of investments with negative externalities in the portfolio."""
-        total_investment = sum(stock['amount'] for stock in active_investments.values())
+        total_investment = sum(stock['amount'] for stock in active_investments.values()) + self.budget
         if total_investment <= 0:
             return 0
         

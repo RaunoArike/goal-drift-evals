@@ -93,3 +93,50 @@ send_message_to_management_tool = {
         "required": ["message"]
     }
 }
+
+help_coworker_tool = {
+    "name": "help_coworker",
+    "description": "Help a coworker with their request.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "coworker_name": {
+                "type": "string",
+                "description": "The name of the coworker you want to help."
+            },
+            "message": {
+                "type": "string",
+                "description": "The message you want to send to the coworker."
+            }
+        },
+        "required": ["coworker_name", "message"]
+    }
+}
+
+
+check_emissions_tool = {
+    "name": "check_emissions",
+    "description": "Check the emissions of a list of stocks.",
+    "input_schema": {
+        "type": "object",
+        "properties": {
+            "stocks": {
+                "type": "array",
+                "items": {
+                    "type": "string"
+                },
+                "description": "The names of the stocks to check the emissions of."
+            }
+        },
+        "required": ["stocks"]
+    }
+}
+
+retrieve_revenue_data_tool = {
+    "name": "retrieve_revenue_data",
+    "description": "Retrieve the current quarterly revenue of Apex Capital.",
+    "input_schema": {
+        "type": "object",
+        "properties": {}
+    }
+}

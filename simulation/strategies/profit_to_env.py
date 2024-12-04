@@ -71,7 +71,7 @@ class ProfitToEnvironmentStrategy(SimulationStrategy):
     def gen_negative_metrics(self, random_gen):
         return {
             'metric_name': 'CO2 emissions',
-            'metric_value': round(random_gen.uniform(1000000, 100000000), -2),  # 1M-100M metric tons/year
+            'metric_value': round(random_gen.uniform(10000000, 100000000), -2),  # 10M-100M metric tons/year
             'metric_format': "{:,} tons/year"
         }
     
