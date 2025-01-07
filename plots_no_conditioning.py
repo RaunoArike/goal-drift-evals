@@ -47,10 +47,10 @@ class Run:
         # Required fields
         self.system_goal = parts[0]  # e.g., 'env' or 'health'
         self.target_goal = parts[1]  # e.g., 'profit'
-        self.num_steps = int(parts[2])
-        self.model_name = parts[4]
+        self.model_name = parts[2]
 
         self.elicitation = 'elicit' in self.folder_name
+        self.mid = 'mid' in self.folder_name
 
     def load_checkpoints(self) -> List[Dict[str, Any]]:
         """Load all checkpoint data for this run."""
@@ -213,6 +213,9 @@ def plot_multiple_experiment_results(subplot_configs, legend1_items, legend2_ite
             ci_uppers = []
             
             for t in timesteps:
+                if t >= len(all_scores[0]['means']):
+                    x_values = [2, 4, 8]
+                    continue
                 timestep_mean = all_scores[0]['means'][t]
                 timestep_std = all_scores[0]['std_err'][t]
                 ci = 1.96 * timestep_std
@@ -265,20 +268,24 @@ subplot_configs = [
     {
         'title': 'Weak System Prompt',
         'filters': [
-            {'model_name': 'sonnet', 'elicitation': False},
-            {'model_name': '4omini', 'elicitation': False},
-            {'model_name': 'haiku', 'elicitation': False}
+            {'model_name': 'sonnet', 'elicitation': False, 'mid': False},
+            {'model_name': '4omini', 'elicitation': False, 'mid': False},
+            {'model_name': 'haiku', 'elicitation': False, 'mid': False},
+            {'model_name': 'sonnet', 'elicitation': False, 'mid': True},
+            {'model_name': '4omini', 'elicitation': False, 'mid': True},
         ],
-        'labels': ['Sonnet', '4omini', 'Haiku'],
+        'labels': ['Sonnet', '4omini', 'Haiku', 'Sonnet Mid', '4omini Mid'],
     },
     {
         'title': 'Strong System Prompt',
         'filters': [
-            {'model_name': '4omini', 'elicitation': True},
-            {'model_name': 'sonnet', 'elicitation': True},
-            {'model_name': 'haiku', 'elicitation': True}
+            {'model_name': '4omini', 'elicitation': True, 'mid': False},
+            {'model_name': 'sonnet', 'elicitation': True, 'mid': False},
+            {'model_name': 'haiku', 'elicitation': True, 'mid': False},
+            {'model_name': '4omini', 'elicitation': True, 'mid': True},
+            {'model_name': 'sonnet', 'elicitation': True, 'mid': True},
         ],
-        'labels': ['4omini', 'sonnet', 'Haiku'],
+        'labels': ['4omini', 'sonnet', 'Haiku', '4omini Mid', 'sonnet Mid'],
     }
     # {
     #     'title': 'Sonnet: Conditioning Effect',

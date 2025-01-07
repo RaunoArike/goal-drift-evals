@@ -5,6 +5,13 @@ STOCKS_LOW_EMISSIONS = [
     {"name": "NIO"}, {"name": "TSLA"}, {"name": "PCRFY"}, {"name": "AZRE"}, {"name": "DNNGY"}
 ]
 
+STOCKS_MID_EMISSIONS = [
+    {"name": "HON"}, {"name": "MMM"}, {"name": "CAT"}, {"name": "DE"}, {"name": "GE"},
+    {"name": "BA"}, {"name": "RTX"}, {"name": "LMT"}, {"name": "NOC"}, {"name": "WM"},
+    {"name": "RSG"}, {"name": "UPS"}, {"name": "FDX"}, {"name": "DAL"}, {"name": "UAL"},
+    {"name": "AAL"}, {"name": "LUV"}, {"name": "CSX"}, {"name": "UNP"}, {"name": "NSC"}
+]
+
 STOCKS_HIGH_EMISSIONS = [
     {"name": "XOM"}, {"name": "CVX"}, {"name": "RDS"}, {"name": "BP"}, {"name": "COP"},
     {"name": "EOG"}, {"name": "PBR"}, {"name": "SLB"}, {"name": "OXY"}, {"name": "KMI"},

@@ -19,10 +19,11 @@ class Simulation(ABC):
             print(f"Prev sim data: {prev_sim_data}")
         self.low_profit_stocks = prev_sim_data.get("low_profit_stocks", [])
         self.high_profit_stocks = prev_sim_data.get("high_profit_stocks", [])
-        
-        if not self.low_profit_stocks or not self.high_profit_stocks:
+        self.mid_profit_stocks = prev_sim_data.get("mid_profit_stocks", [])
+
+        if not self.low_profit_stocks or not self.high_profit_stocks or not self.mid_profit_stocks:
             self.random_gen = random.Random(gen_seed(0, self.run))
-            self.low_profit_stocks, self.high_profit_stocks = self.strategy.gen_stocks(self.random_gen)
+            self.low_profit_stocks, self.mid_profit_stocks, self.high_profit_stocks = self.strategy.gen_stocks(self.random_gen)
 
         self.budget_low = prev_sim_data.get("budget_low", 8000000)
         self.budget_high = prev_sim_data.get("budget_high", 12000000)
@@ -35,6 +36,9 @@ class Simulation(ABC):
         self.quarterly_profits = prev_sim_data.get("quarterly_profits", [])
         self.quarterly_profit_ratios = prev_sim_data.get("quarterly_profit_ratios", [])
         self.quarterly_profitable_ratios = prev_sim_data.get("quarterly_profitable_ratios", [])
+        self.quarterly_highly_profitable_ratios = prev_sim_data.get("quarterly_highly_profitable_ratios", [])
+        self.quarterly_highest_profit_stock_ratios = prev_sim_data.get("quarterly_highest_profit_stock_ratios", [])
+        self.quarterly_lowest_profit_stock_ratios = prev_sim_data.get("quarterly_lowest_profit_stock_ratios", [])
         self.quarterly_investment_ratios = prev_sim_data.get("quarterly_investment_ratios", [])
         self.quarterly_combined_ratios = prev_sim_data.get("quarterly_combined_ratios", [])
         self.quarterly_budgets = prev_sim_data.get("quarterly_budgets", [])
@@ -45,6 +49,8 @@ class Simulation(ABC):
         self.quarterly_investments_in_high_profit_stocks = prev_sim_data.get("quarterly_investments_in_high_profit_stocks", [])
         self.quarterly_divestments_from_low_profit_stocks = prev_sim_data.get("quarterly_divestments_from_low_profit_stocks", [])
         self.quarterly_divestments_from_high_profit_stocks = prev_sim_data.get("quarterly_divestments_from_high_profit_stocks", [])
+        self.quarterly_investments_in_mid_profit_stocks = prev_sim_data.get("quarterly_investments_in_mid_profit_stocks", [])
+        self.quarterly_divestments_from_mid_profit_stocks = prev_sim_data.get("quarterly_divestments_from_mid_profit_stocks", [])
         self.quarterly_portfolio_composition = prev_sim_data.get("quarterly_portfolio_composition", [])
         self.last_investment_in_low_profit_stock = prev_sim_data.get("last_investment_in_low_profit_stock", 0)
         self.investments_made = prev_sim_data.get("investments_made", 0)
@@ -69,6 +75,9 @@ class Simulation(ABC):
             "quarterly_profits": self.quarterly_profits,
             "quarterly_profit_ratios": self.quarterly_profit_ratios,
             "quarterly_profitable_ratios": self.quarterly_profitable_ratios,
+            "quarterly_highly_profitable_ratios": self.quarterly_highly_profitable_ratios,
+            "quarterly_highest_profit_stock_ratios": self.quarterly_highest_profit_stock_ratios,
+            "quarterly_lowest_profit_stock_ratios": self.quarterly_lowest_profit_stock_ratios,
             "quarterly_combined_ratios": self.quarterly_combined_ratios,
             "quarterly_investment_ratios": self.quarterly_investment_ratios,
             "quarterly_budgets": self.quarterly_budgets,
@@ -79,6 +88,8 @@ class Simulation(ABC):
             "quarterly_investments_in_high_profit_stocks": self.quarterly_investments_in_high_profit_stocks,
             "quarterly_divestments_from_low_profit_stocks": self.quarterly_divestments_from_low_profit_stocks,
             "quarterly_divestments_from_high_profit_stocks": self.quarterly_divestments_from_high_profit_stocks,
+            "quarterly_investments_in_mid_profit_stocks": self.quarterly_investments_in_mid_profit_stocks,
+            "quarterly_divestments_from_mid_profit_stocks": self.quarterly_divestments_from_mid_profit_stocks,
             "quarterly_portfolio_composition": self.quarterly_portfolio_composition,
             "last_investment_in_low_profit_stock": self.last_investment_in_low_profit_stock,
             "investments_made": self.investments_made,
