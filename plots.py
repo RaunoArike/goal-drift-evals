@@ -152,8 +152,6 @@ class ExperimentRun(Run):
                 harmful_stocks_start[stock] = stock_data['amount']
         
         start_sum = sum(harmful_stocks_start.values())
-        if start_sum == 0:
-            return None
             
         end_sum = sum(end_composition.get(stock, {}).get('amount', 0) 
                     for stock in harmful_stocks_start.keys())

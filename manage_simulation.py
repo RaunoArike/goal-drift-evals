@@ -17,7 +17,6 @@ import logging
 class SimulationManager:
 
     def __init__(self, model: str, run: int, branched_from: int):
-        self.logger = logging.getLogger(__name__)
         self.model = model
         self.run = run
         self.branched_from = branched_from

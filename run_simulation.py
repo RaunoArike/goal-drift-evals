@@ -8,9 +8,6 @@ import json
 import logging
 from utils.utils import load_checkpoint
 from config import EnvType, SYSTEM_MESSAGE
-import random
-import pickle
-from utils.utils import gen_seed
 
 class LogFileWriter:
     def __init__(self, log_file):
@@ -22,6 +19,36 @@ class LogFileWriter:
 
     def flush(self):
         self.log_file.flush()
+
+
+def setup_checkpoint_logging(checkpoint_path: str, run: int) -> logging.Logger:
+    """Setup logging specifically for checkpoint interrogation"""
+    log_file_path = os.path.join(os.path.dirname(checkpoint_path), f'interrogation_run{run}.log')
+    
+    # Clear the file at the start
+    with open(log_file_path, 'w') as f:
+        f.write('')
+    
+    # Create formatter
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s')
+    
+    # Create file handler in append mode
+    file_handler = logging.FileHandler(log_file_path, mode='a')
+    file_handler.setFormatter(formatter)
+    
+    # Create a logger specific to this checkpoint interrogation
+    logger = logging.getLogger(f'checkpoint_interrogation_{run}')
+    logger.handlers = []  # Remove any existing handlers
+    logger.addHandler(file_handler)
+    logger.setLevel(logging.INFO)
+    
+    # Create a file writer and redirect stdout/stderr
+    log_file = open(log_file_path, 'a')
+    file_writer = LogFileWriter(log_file)
+    sys.stdout = file_writer
+    sys.stderr = file_writer
+    
+    return logger, log_file
 
 def setup_logging(run, verbose):
     log_file_path = f'logs/task1_output_run{run}.txt'
