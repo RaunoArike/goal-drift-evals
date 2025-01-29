@@ -18,7 +18,8 @@ for steps in "${STEPS_ARRAY[@]}"; do
         --run_range "1" "20"  \
         --branch_from "1" "$((steps + 1))" \
         --checkpoint_dir "checkpoints_haiku_on_sonnet" \
-        --distractions
+        --distractions \
+        --verbose
     
     # Check if the previous command was successful
     if [ $? -ne 0 ]; then
