@@ -293,4 +293,4 @@ if __name__ == "__main__":
             run_results.append(result)
 
     sys.stdout = original_stdout
-    print(f"All runs from {run_list[0]} to {run_list[-1]} completed. Results have been saved to {args.results_file}")
+    print(f"All runs from {run_list[0]} to {run_list[-1]} completed.")

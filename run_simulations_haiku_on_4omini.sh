@@ -14,12 +14,12 @@ for steps in "${STEPS_ARRAY[@]}"; do
         --num_steps "${NUM_STEPS}" \
         --parallel \
         --num_instrumental_steps "${steps}" \
-        --model "claude-3-5-sonnet-latest" \
-        --run_range "7" "20"  \
+        --model "claude-3-5-haiku-latest" \
+        --run_range "1" "20"  \
         --branch_from "1" "$((steps + 1))" \
-        --checkpoint_dir "checkpoints_sonnet" \
+        --checkpoint_dir "checkpoints_haiku_on_4omini" \
         --distractions \
-        --ood
+        --condition_claude_on_gpt
     
     # Check if the previous command was successful
     if [ $? -ne 0 ]; then

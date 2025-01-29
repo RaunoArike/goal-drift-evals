@@ -78,9 +78,9 @@ class SimulationManager:
                 num_tokens -= num_tool_tokens
             print("Num tokens before: ", num_tokens)
             random_gen = random.Random(gen_seed(start_timestep, self.run))
-            # self.messages = replace_assistant_messages_with_random_sentences(self.model, self.messages, self.run)
+            self.messages = replace_assistant_messages_with_random_sentences(self.model, self.messages, self.run)
             # self.messages = build_random_text_to_token_target(self.model, random_gen, num_tokens)
-            self.messages = build_dots_to_token_target(self.model, random_gen, num_tokens)
+            # self.messages = build_dots_to_token_target(self.model, random_gen, num_tokens)
             num_tokens = count_messages_tokens(self.model, self.messages, "", sim.get_tools())
             print("Num tokens after: ", num_tokens - num_tool_tokens)
             print("Replaced message history with random text of equivalent length for OOD testing")
