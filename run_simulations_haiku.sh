@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 SOURCE="env"
 TARGET="profit"
 NUM_STEPS=10
@@ -6,7 +7,7 @@ NUM_STEPS=10
 STEPS_ARRAY=(32 16 8 4 2)
 
 # Run simulations with increasing steps
-for steps in "${STEPS_ARRAY[@]}"; do
+for steps in "${STEPS_ARRAY[@]}}"; do
     echo "Running simulation with ${steps} steps..."
     uv run python run_simulation.py \
         --source "${SOURCE}" \

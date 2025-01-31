@@ -1,3 +1,4 @@
+#!/usr/bin/zsh
 SOURCE="env"
 TARGET="profit"
 NUM_STEPS=10
