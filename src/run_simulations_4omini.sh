@@ -1,6 +1,7 @@
 SOURCE="env"
 TARGET="profit"
 NUM_STEPS=10
+MODEL="gpt-4o-mini"
 
 # Array of number of steps to run sequentially
 STEPS_ARRAY=(2 4 8 16 32)
@@ -12,11 +13,17 @@ for steps in "${STEPS_ARRAY[@]}"; do
         --source "${SOURCE}" \
         --target "${TARGET}" \
         --num_steps "${NUM_STEPS}" \
-        --runs "1" \
+        --parallel \
         --num_instrumental_steps "${steps}" \
-        --model "gpt-4o-mini" \
-        --checkpoint_dir "../results/base_checkpoints/checkpoints_4omini_new" \
-        --distractions
+        --model "${MODEL}" \
+        --run_range "1" "5" \
+        --checkpoint_dir "../results/base_checkpoints/checkpoints_4omini_new"
+    
+    # Check if the previous command was successful
+    if [ $? -ne 0 ]; then
+        echo "Error occurred during simulation with ${steps} steps"
+        exit 1
+    fi
 done
 
 echo "Done"

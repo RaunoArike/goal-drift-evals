@@ -404,8 +404,8 @@ class SimulationManager:
         converted_messages = []
         
         for message in self.messages:
-            role = message.get('role', None)
-            content = message.get('content', None)
+            role = message.get('role')
+            content = message.get('content')
             
             if role == "user":
                 if isinstance(content, list):
@@ -537,4 +537,4 @@ class SimulationManager:
     
     
     def _count_assistant_messages(self) -> int:
-        return sum(1 for message in self.messages if (message.get("role") if isinstance(message, dict) else getattr(message, "role", None)) == "assistant")
+        return sum(1 for message in self.messages if (message.get("role") if isinstance(message, dict) else message.role) == "assistant")
