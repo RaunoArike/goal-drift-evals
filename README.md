@@ -79,6 +79,7 @@ See [LICENSE](LICENSE).
 
 ## Citation
 
+```bibtex
 @article{arike2025evaluating,
   title={Evaluating Goal Drift in Language Model Agents},
   author={Arike, Rauno and Donoway, Elizabeth and Bartsch, Henning and Hobbhahn, Marius},
@@ -86,3 +87,4 @@ See [LICENSE](LICENSE).
   year={2025},
   url={https://arxiv.org/abs/2505.02709}
 }
+```
