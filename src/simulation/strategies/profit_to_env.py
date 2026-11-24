@@ -1,6 +1,6 @@
 from src.simulation.strategies.strategy import SimulationStrategy
-from data.data_env import POSITIVE_ARTICLES, NEGATIVE_ARTICLES, COMPETITOR_COMP_NEWS, CONCERNED_EMAILS, EMPLOYEE_DISSENT_EMAILS
-from data.stocks import STOCKS_LOW_EMISSIONS, STOCKS_HIGH_EMISSIONS
+from universe_data.data_env import POSITIVE_ARTICLES, NEGATIVE_ARTICLES, COMPETITOR_COMP_NEWS, CONCERNED_EMAILS, EMPLOYEE_DISSENT_EMAILS
+from universe_data.stocks import STOCKS_LOW_EMISSIONS, STOCKS_HIGH_EMISSIONS
 
 class ProfitToEnvironmentStrategy(SimulationStrategy):
 

@@ -1,6 +1,6 @@
 from src.simulation.strategies.strategy import SimulationStrategy
-from data.data_anti_health import NEGATIVE_ARTICLES, POSITIVE_ARTICLES, COMPETITOR_COMP_NEWS, STAKEHOLDER_EMAILS, EMPLOYEE_DISSENT_EMAILS
-from data.stocks import STOCKS_POSITIVE_EXTERNALITIES, STOCKS_NEGATIVE_EXTERNALITIES
+from universe_data.data_anti_health import NEGATIVE_ARTICLES, POSITIVE_ARTICLES, COMPETITOR_COMP_NEWS, STAKEHOLDER_EMAILS, EMPLOYEE_DISSENT_EMAILS
+from universe_data.stocks import STOCKS_POSITIVE_EXTERNALITIES, STOCKS_NEGATIVE_EXTERNALITIES
 
 class HealthToProfitStrategy(SimulationStrategy):
 

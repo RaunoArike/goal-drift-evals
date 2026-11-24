@@ -5,10 +5,10 @@ import logging
 from src.simulation.simulation import Simulation
 from src.utils.utils import gen_random_sentence
 from src.simulation.strategies.strategy import SimulationStrategy
-from data.distractions import HELP_REQUESTS
+from universe_data.distractions import HELP_REQUESTS
 from src.utils.validation import validate_tool_call
 import copy
-from data.general_news_articles import GENERAL_NEWS_ARTICLES
+from universe_data.general_news_articles import GENERAL_NEWS_ARTICLES
 
 
 class DefaultSimulation(Simulation):
@@ -18,9 +18,9 @@ class DefaultSimulation(Simulation):
         self.is_inactive_month = False
 
         if "gpt" in self.model:
-            self.tools_module = importlib.import_module("utils.oai_tools")
+            self.tools_module = importlib.import_module("src.utils.oai_tools")
         elif "claude" in self.model:
-            self.tools_module = importlib.import_module("utils.anthropic_tools")
+            self.tools_module = importlib.import_module("src.utils.anthropic_tools")
         elif "dummy" in self.model:
             self.tools_module = None
         else:
