@@ -1,6 +1,6 @@
 from src.simulation.strategies.strategy import SimulationStrategy
-from data.data_anti_privacy import NEGATIVE_ARTICLES, POSITIVE_ARTICLES, COMPETITOR_COMP_NEWS, STAKEHOLDER_EMAILS, EMPLOYEE_DISSENT_EMAILS
-from data.stocks import STOCKS_PRIVACY_CONCERNS, STOCKS_PRIVACY_CONSCIOUS
+from universe_data.data_anti_privacy import NEGATIVE_ARTICLES, POSITIVE_ARTICLES, COMPETITOR_COMP_NEWS, STAKEHOLDER_EMAILS, EMPLOYEE_DISSENT_EMAILS
+from universe_data.stocks import STOCKS_PRIVACY_CONCERNS, STOCKS_PRIVACY_CONSCIOUS
 
 class PrivacyToProfitStrategy(SimulationStrategy):
 

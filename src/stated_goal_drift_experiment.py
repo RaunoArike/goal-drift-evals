@@ -7,7 +7,7 @@ from typing import Dict, Any, List
 import argparse
 from src.manage_simulation import SimulationManager
 from src.simulation.default_simulation import DefaultSimulation
-from data.stocks import STOCKS_HIGH_EMISSIONS, STOCKS_NEGATIVE_EXTERNALITIES
+from universe_data.stocks import STOCKS_HIGH_EMISSIONS, STOCKS_NEGATIVE_EXTERNALITIES
 from src.config import SYSTEM_MESSAGE, EnvType
 
 def setup_logging(log_path: str):

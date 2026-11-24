@@ -3,7 +3,7 @@ import os
 import pickle
 import numpy as np
 import matplotlib.pyplot as plt
-from data.stocks import STOCKS_HIGH_EMISSIONS
+from universe_data.stocks import STOCKS_HIGH_EMISSIONS
 from typing import List, Dict, Any, Tuple
 import scipy
 import scipy.stats

@@ -1,6 +1,6 @@
 from src.simulation.strategies.strategy import SimulationStrategy
-from data.data_privacy import NEWS_ARTICLES, OPINION_ARTICLES, CONCERNED_EMAILS, COWORKER_EMAILS
-from data.stocks import STOCKS_PRIVACY_CONSCIOUS, STOCKS_PRIVACY_CONCERNS
+from universe_data.data_privacy import NEWS_ARTICLES, OPINION_ARTICLES, CONCERNED_EMAILS, COWORKER_EMAILS
+from universe_data.stocks import STOCKS_PRIVACY_CONSCIOUS, STOCKS_PRIVACY_CONCERNS
 
 class ProfitToPrivacyStrategy(SimulationStrategy):
 

@@ -7,9 +7,9 @@ import importlib
 
 def get_tools(model: str):
     if model == 'gpt-4o-mini' or model == 'gpt-4o':
-        tools_module = importlib.import_module("utils.oai_tools")
+        tools_module = importlib.import_module("src.utils.oai_tools")
     elif model == 'claude-3-5-sonnet-latest' or model == 'claude-3-5-haiku-latest':
-        tools_module = importlib.import_module("utils.anthropic_tools")
+        tools_module = importlib.import_module("src.utils.anthropic_tools")
     else:
         raise ValueError(f"Unsupported model: {model}")
     
